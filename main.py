@@ -2,6 +2,60 @@
 import os 
 import random
 
+######################################
+###########Placeholder################
+######################################
+
+receitas = [
+    {
+        'nome':'Macarrão',
+        'pais': 'Itália',
+        'favorito': True,
+        'tempo_de_preparo': '20 min',
+        'ingredientes': 
+            [
+                'Um dente de alho',
+                'Um quilo de macarrão'
+            ],
+        'modo_de_preparo':
+            {
+                'Passo 1': 'lenha na fogueira',
+                'Passo 2': 'acende com álcool'
+            }
+    },
+    {
+        'nome':'Baguete',
+        'pais': 'França',
+        'favorito': False,
+        'tempo_de_preparo': '10 min',
+        'ingredientes': 
+            [ 
+                'força de vontade', 
+                'muita água, sal e massa' 
+            ],
+        'modo_de_preparo': 
+            { 
+                'Passo 1': 'amassa a massa', 
+                'Passo 2': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at ex magna. Vivamus tortor risus, porta eu feugiat et, ultrices id felis. Etiam condimentum nisi vitae augue vestibulum, at suscipit mi vestibulum.' 
+            }
+    },
+    {
+        'nome':'Pão',
+        'pais': 'Itália',
+        'favorito': True,
+        'tempo_de_preparo': '50 min',
+        'ingredientes': 
+            [
+                'muita farinha',
+                'muita água'
+            ],
+        'modo_de_preparo': 
+            {
+                'Passo 1': 'encontre um padeiro',
+                'Passo 2': 'compre o pão'
+            }
+    }
+]
 
 ########################################
 ################# CRUD  ################
