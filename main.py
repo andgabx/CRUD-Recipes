@@ -110,6 +110,63 @@ def ui_receitas() -> None:
             case _:
                 mensagem=f'Valor inválido! ({user_input})'
 
+# Mostra uma receita em um dado array
+def ui_mostrar_receita(index:int, array:list) -> None:
+    """Mostra a receita no [index] da [lista] fornecido."""
+    erro=''
+    save_flag=False
+    while True:
+        os.system('cls')
+        current_recipe = array[int(index)]
+        
+        print('┎──────────────────────────────────────────────────────────┐')
+        print(f'┃ Nome: {current_recipe['nome']}'.ljust(59)+'│')
+        print(f'┃ País de origem: {current_recipe['pais']}'.ljust(59)+'│')
+        print(f'┃ Tempo de preparo: {current_recipe['tempo_de_preparo']}'.ljust(59)+'│')
+        print('┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┥')
+        print('┃ Você vai precisar de:                                    │')
+
+        for i in current_recipe['ingredientes']:
+            print(f'┃ • {i}'.ljust(59)+'│')
+
+        print('┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┥')
+
+        for i, j in current_recipe['modo_de_preparo'].items():
+            print(f'┃ {i}:'.ljust(59)+'│')
+            if len(j)>36:
+                for i in ui_text_wrap(j, 56):
+                    print(f'┃  {i}'.ljust(59)+'│')
+            else:
+                print(f'┃  {j}'.ljust(59)+'│')        
+        print('┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━┥')
+
+        if current_recipe['favorito']:
+            print('┃ (1) Desfavoritar            ┃ (.) Retornar               │')
+        else:
+            print('┃ (1) Favoritar               ┃ (.) Retornar               │')
+
+        print('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙')
+
+        if erro!='':
+            print(erro)
+        erro=''
+        
+        user_input = input()
+
+        match(user_input):
+            case '.':
+                if save_flag:
+                    salvar()
+                return
+            case '1':
+                if current_recipe['favorito']:
+                    current_recipe['favorito'] = False
+                else:
+                    current_recipe['favorito'] = True
+                save_flag=True
+            case _:
+                erro=f'Valor inválido! ({user_input})'
+
 # Função principal do programa
 def main():
     global receitas # Apontando que receitas é global.
