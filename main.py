@@ -1,4 +1,22 @@
 ########################################
+########## SALVAR E CARREGAR  ##########
+########################################
+
+# Salvar
+def salvar() -> None:
+    """Salva as receitas em um arquivo chamado receitas.txt na raiz do aplicativo."""
+    try:
+        file = open('receitas.txt', 'w+')
+        file.write(str(receitas))
+    except:
+        input('Erro ao criar arquivo!\nPressione enter para continuar.')
+    finally:
+        try:
+            file.close()
+        except:
+            pass
+
+########################################
 ########## TELAS DE NAVEGAÇÃO ##########
 ########################################
 
@@ -45,7 +63,7 @@ def ui_inicio() -> None:
                 return
             case _:
                 error=f'Valor inválido! ({user_input})'
-                
+
 # Função principal do programa
 def main():
     global receitas # Apontando que receitas é global.
