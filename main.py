@@ -16,6 +16,22 @@ def salvar() -> None:
         except:
             pass
 
+# Carregar
+def carregar() -> list[dict]:
+    try:
+        file = open("receitas.txt", "r")
+        print(__path__(file))
+        input()
+        file_content = eval(file.read())
+        return file_content
+    except:
+        return []
+    finally:
+        try:
+            file.close()
+        except:
+            pass
+
 ########################################
 ########## TELAS DE NAVEGAÇÃO ##########
 ########################################
