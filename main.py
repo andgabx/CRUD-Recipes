@@ -188,11 +188,6 @@ def ui_receitas() -> None:
         
         print('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙')
         
-        if mensagem!='':
-            print(mensagem)
-        mensagem=''
-
-        user_input=input()
 
         match(user_input):
             case '1':
