@@ -185,6 +185,7 @@ def carregar() -> list[dict]:
         except:
             pass
 
+
 ########################################
 ######## FUNÇÕES PARA INTERFACE ########
 ########################################
@@ -238,6 +239,7 @@ def ui_text_wrap(texto, espacos) -> list[str]:
             linha=[]
 
     return linhas
+
 
 ########################################
 ########## TELAS DE NAVEGAÇÃO ##########
@@ -406,6 +408,145 @@ def ui_mostrar_receita(index:int, array:list) -> None:
                 save_flag=True
             case _:
                 erro=f'Valor inválido! ({user_input})'
+                def ui_favoritos() -> None:
+    """Imprime uma tela contendo a lista de receitas favoritadas."""
+    erro=''
+    while True:
+        favoritos = filtro_favoritos()
+        os.system('cls')
+        print(
+            '┎──────────────────────────────────────────────────────────┐\n' +
+            '┃ Suas receitas favoritas                                  │\n' +
+            '┃ (ID) Visualizar            | (.) Retornar                │\n' +
+            '┣━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┥\n' +
+            '┃  ID  ┃ Nome                                              │')
+        
+        if len(filtro_favoritos()) != 0:
+            for recipe in favoritos:
+                index = favoritos.index(recipe)
+                print('┃ '.ljust(5-len(str(index))) + f'{index}  ┃' +
+                      f' {recipe['nome']}'.ljust(51)+'│')
+        else:
+            print(
+                '┃      ┃           Favorite alguma receita                 │\n' +
+                '┃      ┃           para visualizá-la aqui!                 │')
+        
+        print('┗━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙')
+
+        if erro!='':
+            print(erro)
+        erro=''
+
+        # Retorna uma lista de chars com o range para comparação.
+        referencia = list(map(lambda x: str(x), range(len(favoritos))))
+
+        user_input = input()
+
+        match user_input:
+            case '.':
+                return
+            case _:
+                if user_input in referencia:
+                    ui_mostrar_receita(user_input, favoritos)
+                else:
+                    erro=f'Valor inválido! ({user_input})'
+
+def ui_ingredientes() -> None:
+    """Imprime uma tela para filtragem por ingredientes."""
+    error=''
+    filtros=[]
+    while True:
+        os.system('cls')
+        print(
+            '┎──────────────────────────────────────────────────────────┐\n' +
+            '┃ Suas receitas favoritas                                  │\n' +
+            '┃ (ID) Visualizar            | (-) Limpar filtros          │\n' +
+            '┃ (+) Adicionar filtro       | (.) Retornar                │\n' +
+            '┣━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┥\n' +
+            '┃  ID  ┃ Nome                                              │')
+        
+        lista_filtrada = filtro_ingrediente(filtros)
+        if len(lista_filtrada) != 0:
+            for recipe in lista_filtrada:
+                index = lista_filtrada.index(recipe)
+                print('┃ '.ljust(5-len(str(index))) + f'{index}  ┃' +
+                      f' {recipe['nome']}'.ljust(51)+'│')
+        else:
+            print(
+                '┃      ┃       Nenhuma receita para esses filtros!         │\n' +
+                '┃      ┃                 Tente novamente!                  │')
+        
+        print('┗━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙')
+
+        if error!='':
+            print(error)
+        error=''
+
+        # Retorna uma lista de chars com o range para comparação.
+        referencia = list(map(lambda x: str(x), range(len(lista_filtrada))))
+
+        user_input=input()
+
+        match user_input:
+            case '.':
+                return
+            case '+':
+                filtros.append(input("Que ingrediente você quer usar?\n"))
+            case '-':
+                filtros=[]
+            case _:
+                if user_input in referencia:
+                    ui_mostrar_receita(user_input, lista_filtrada)
+                else:
+                    error=f'Valor inválido! ({user_input})'
+
+def ui_pais() -> None:
+    """Imprime uma tela contendo a lista receitas de um determinado país."""
+    erro=''
+    pais = input('Digite o nome do país do qual deseja ver as receitas: ')
+    receita_pais = filtro_pais(pais)
+    while True:
+        
+        os.system('cls')
+        print(
+            '┎──────────────────────────────────────────────────────────┐\n' +
+            f'┃ Filtrando receitas por país: {pais}'.ljust(59) + '│\n' +
+            '┃ (ID) Visualizar                                          │\n'
+            '┃ (.) Retornar                                             │\n' +
+            '┣━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┥\n' +
+            '┃  ID  ┃ Nome                                              │')
+        
+        if len(filtro_favoritos()) != 0:
+            for recipe in receita_pais:
+                index = receita_pais.index(recipe)
+                print('┃ '.ljust(5-len(str(index))) + f'{index}  ┃' +
+                      f' {recipe['nome']}'.ljust(51)+'│')
+        else:
+            print(
+                '┃      ┃     Não há receitas marcadas com esse país!       │\n' +
+                '┃      ┃     Verifique o que digitou e tente novamente!    │')
+        
+        print('┗━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙')
+
+        if erro!='':
+            print(erro)
+        erro=''
+
+        # Retorna uma lista de chars com o range para comparação.
+        referencia = list(map(lambda x: str(x), range(len(receita_pais))))
+
+        user_input = input()
+
+        match user_input:
+            case '.':
+                return
+            case _:
+                if user_input in referencia:
+                    ui_mostrar_receita(user_input, receita_pais)
+                else:
+                    erro=f'Valor inválido! ({user_input})'
+
+
     
 # Função principal do programa
 def main():
