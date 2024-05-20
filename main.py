@@ -77,6 +77,79 @@ def adicionar_receita() -> None:
 
     receitas.append(nova_receita)
     print("Receita adicionada com sucesso!")
+
+# Modificar
+def modificar_receita(valor) -> None:
+    id_receita=int(valor)
+    print(f"Modificando receita: {receitas[id_receita]['nome']}")
+
+    while True:
+        novo_nome = input('Digite um novo nome para a receita (deixe em branco para manter): ')
+        if novo_nome or novo_nome.strip() == "":
+            break
+        print("O nome da receita não pode ser vazio.")
+
+    while True:
+        novo_pais = input('Digite o novo país de origem da receita (deixe em branco para manter): ')
+        if novo_pais or novo_pais.strip() == "":
+            break
+        print("O país de origem não pode ser vazio.")
+
+    while True:
+        novo_tempo_de_preparo = input('Digite o novo tempo de preparo (deixe em branco para manter): ')
+        if novo_tempo_de_preparo or novo_tempo_de_preparo.strip() == "":
+            break
+        print('O tempo de preparo não pode ser vazio.')
+
+    ingredientes = []
+    manter_ingredientes=False
+    print('Digite os novos ingredientes (digite "sair" no primeiro para manter ou posteriormente para parar):')
+    while True:
+        ingrediente = input('Nome do ingrediente: ')
+        if ingredientes == [] and ingrediente.lower() == 'sair':
+            manter_ingredientes=True
+            break
+        if ingrediente.lower() == 'sair':
+            if ingredientes:
+                break
+            else:
+                print('A lista de ingredientes não pode estar vazia.')
+                continue
+        if ingrediente:
+            ingredientes.append(ingrediente)
+        else:
+            print('O ingrediente não pode ser vazio.')
+
+    modo_de_preparo = {}
+    manter_preparo = False
+    Passo = 1
+    print('Digite o novo modo de preparo Passo a Passo (digite "sair" no primeiro para manter ou posteriormente para parar):')
+    while True:
+        descricao = input(f"Passo {Passo}: ")
+        if modo_de_preparo == {} and descricao.lower() == 'sair':
+            manter_preparo = True
+            break
+        if descricao.lower() == 'sair':
+            if modo_de_preparo:
+                break
+            else:
+                print('O modo de preparo não pode estar vazio.')
+                continue
+        if descricao:
+            modo_de_preparo[f'Passo {Passo}'] = descricao
+            Passo += 1
+        else:
+            print('A descrição do passo não pode ser vazia.')
+
+    receitas[id_receita]['nome'] = novo_nome if novo_nome else receitas[id_receita]['nome']
+    receitas[id_receita]['pais'] = novo_pais if novo_pais else receitas[id_receita]['pais']
+    receitas[id_receita]['tempo_de_preparo'] = novo_tempo_de_preparo if novo_tempo_de_preparo else receitas[id_receita]['tempo_de_preparo']
+    if manter_ingredientes == False:
+        receitas[id_receita]['ingredientes'] = ingredientes if ingredientes else receitas[id_receita]['ingredientes']
+    if manter_preparo == False:
+        receitas[id_receita]['modo_de_preparo'] = modo_de_preparo if modo_de_preparo else receitas[id_receita]['modo_de_preparo']
+
+    input(f'Receita "{receitas[id_receita]['nome']}" modificada com sucesso!\nEntre qualquer valor para continuar...')
    
 ########################################
 ########## SALVAR E CARREGAR  ##########
