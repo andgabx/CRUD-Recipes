@@ -9,6 +9,7 @@
     - [Carregar e Salvar Receitas]
     - [Filtragem de Receitas]
 3. [Progresso Atual]
+4. [Fluxograma]
 
 ## 1. Descrição 
 
@@ -148,3 +149,6 @@ Lista de requisitos:
 - [x] Carregar e salvar receitas
 - [x] Filtragem de receitas
 - [x] Validação e persistência de dados
+
+## 4. Fluxograma
+[<img src="/Flowchart-CRUD-Recipes.jpeg">](https://github.com/andgabx/CRUD-Recipes/blob/main/Flowchart-CRUD-Recipes.jpeg?raw=true)
