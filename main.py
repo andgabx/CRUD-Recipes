@@ -186,6 +186,23 @@ def carregar() -> list[dict]:
             pass
 
 ########################################
+######## FUNÇÕES PARA INTERFACE ########
+########################################
+
+# Filtragem por ingrediente
+def filtro_ingrediente(filtros:list[str]) -> list[str]:
+    """Filtra receitas por ingredientes."""
+    resultado = []
+    for i in receitas:
+        flag = True
+        for j in filtros:
+            if j not in str(i['ingredientes']):
+                flag = False
+        if flag:
+            resultado.append(i)
+    return resultado
+
+########################################
 ########## TELAS DE NAVEGAÇÃO ##########
 ########################################
 
