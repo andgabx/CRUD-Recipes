@@ -202,6 +202,43 @@ def filtro_ingrediente(filtros:list[str]) -> list[str]:
             resultado.append(i)
     return resultado
 
+# Filtragem por país
+def filtro_pais(filtro: str) -> list[str]:
+    """Filtra receitas por país."""
+    resultado = []
+    for i in receitas:
+        if i['pais'] == filtro:
+            resultado.append(i)
+    return resultado
+
+# Filtro de favoritos
+def filtro_favoritos() -> list[str]:
+    """Filtra receitas por favoritos."""
+    resultado = []
+    for i in receitas:
+        if i['favorito']:
+            resultado.append(i)
+    return resultado
+
+# Text wrapping
+def ui_text_wrap(texto, espacos) -> list[str]:
+    """Função de text wrapping para não quebrar a UI."""
+    split = texto.split(' ')
+    linhas = []
+    linha = []
+    linha_len = 0
+    
+    for i in split:
+        linha_len += len(i)+1
+        if linha_len < espacos:
+            linha.append(i+' ')
+        else:
+            linhas.append(''.join(linha).rstrip())
+            linha_len=0
+            linha=[]
+
+    return linhas
+
 ########################################
 ########## TELAS DE NAVEGAÇÃO ##########
 ########################################
