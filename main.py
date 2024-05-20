@@ -188,7 +188,11 @@ def ui_receitas() -> None:
         
         print('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙')
         
+        if mensagem!='':
+            print(mensagem)
+        mensagem=''
 
+        user_input=input()
         match(user_input):
             case '1':
                 view=input("Digite o ID da receita que deseja visualizar\n")
@@ -256,11 +260,7 @@ def ui_mostrar_receita(index:int, array:list) -> None:
 
         print('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙')
 
-        if erro!='':
-            print(erro)
-        erro=''
-        
-        user_input = input()
+
 
         match(user_input):
             case '.':
