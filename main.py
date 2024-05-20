@@ -260,7 +260,11 @@ def ui_mostrar_receita(index:int, array:list) -> None:
 
         print('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙')
 
-
+        if erro!='':
+            print(erro)
+        erro=''
+        
+        user_input = input()
 
         match(user_input):
             case '.':
