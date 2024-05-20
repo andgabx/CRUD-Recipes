@@ -23,7 +23,10 @@ def adicionar_receita() -> None:
             break
         print("O país de origem não pode ser vazio.")
 
-    favorito = input('Esta receita é sua favorita? (sim/não): ') == 'sim'
+    if input('Esta receita é sua favorita? (sim/não): ') == 'sim':
+        favorito=True
+    else:
+        favorito=False
 
     while True:
         tempo_de_preparo = input('Digite o tempo de preparo (ex. "20 min"): ')
@@ -74,7 +77,7 @@ def adicionar_receita() -> None:
 
     receitas.append(nova_receita)
     print("Receita adicionada com sucesso!")
-    
+   
 ########################################
 ########## SALVAR E CARREGAR  ##########
 ########################################
