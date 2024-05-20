@@ -150,7 +150,7 @@ def modificar_receita(valor) -> None:
         receitas[id_receita]['modo_de_preparo'] = modo_de_preparo if modo_de_preparo else receitas[id_receita]['modo_de_preparo']
 
     input(f'Receita "{receitas[id_receita]['nome']}" modificada com sucesso!\nEntre qualquer valor para continuar...')
-   
+
 ########################################
 ########## SALVAR E CARREGAR  ##########
 ########################################
@@ -289,6 +289,7 @@ def ui_inicio() -> None:
             case _:
                 error=f'Valor inválido! ({user_input})'
 
+
 # Tela do menu de receitas
 def ui_receitas() -> None:
     """Imprime a tela do menu de receitas."""
@@ -322,6 +323,7 @@ def ui_receitas() -> None:
         mensagem=''
 
         user_input=input()
+
         match(user_input):
             case '1':
                 view=input("Digite o ID da receita que deseja visualizar\n")
@@ -408,7 +410,8 @@ def ui_mostrar_receita(index:int, array:list) -> None:
                 save_flag=True
             case _:
                 erro=f'Valor inválido! ({user_input})'
-                def ui_favoritos() -> None:
+
+def ui_favoritos() -> None:
     """Imprime uma tela contendo a lista de receitas favoritadas."""
     erro=''
     while True:
@@ -547,7 +550,7 @@ def ui_pais() -> None:
                     erro=f'Valor inválido! ({user_input})'
 
 
-    
+
 # Função principal do programa
 def main():
     global receitas # Apontando que receitas é global.
