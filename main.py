@@ -12,13 +12,13 @@ def adicionar_receita() -> None:
     print('Adicionando uma nova receita.')
 
     while True:
-        nome = input('Digite o nome da receita: ')
+        nome = input('Digite o nome da receita: ').strip()
         if nome:
             break
         print("O nome da receita não pode ser vazio.")
 
     while True:
-        pais = input('Digite o país de origem da receita: ')
+        pais = input('Digite o país de origem da receita: ').strip()
         if pais:
             break
         print("O país de origem não pode ser vazio.")
@@ -29,7 +29,7 @@ def adicionar_receita() -> None:
         favorito=False
 
     while True:
-        tempo_de_preparo = input('Digite o tempo de preparo (ex. "20 min"): ')
+        tempo_de_preparo = input('Digite o tempo de preparo (ex. "20 min"): ').strip()
         if tempo_de_preparo:
             break
         print("O tempo de preparo não pode ser vazio.")
