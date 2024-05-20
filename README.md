@@ -2,13 +2,13 @@
 
 ## Índice
 
-1. [Descrição](#1-descrição)
-2. [Funcionalidades](#4-funcionalidades)
-    - [Adicionar Receitas](#41-adicionar-receitas)
-    - [Modificar Receita](#42-modificar-receita)
-    - [Carregar e Salvar Receitas](#44-carregar-e-salvar-receitas)
-    - [Filtragem de Receitas](#45-filtragem-de-receitas)
-3. [Progresso Atual](#5-progresso-atual)
+1. [Descrição]
+2. [Funcionalidades]
+    - [Adicionar Receitas]
+    - [Modificar Receita]
+    - [Carregar e Salvar Receitas]
+    - [Filtragem de Receitas]
+3. [Progresso Atual]
 
 ## 1. Descrição 
 
