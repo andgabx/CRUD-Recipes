@@ -159,7 +159,7 @@ def modificar_receita(valor) -> None:
 def salvar() -> None:
     """Salva as receitas em um arquivo chamado receitas.txt na raiz do aplicativo."""
     try:
-        file = open('./receitas.txt', 'w')
+        file = open('./receitas.txt', 'w+')
         file.write(str(receitas))
     except:
         input('Erro ao criar arquivo!\nPressione enter para continuar.')
@@ -176,7 +176,7 @@ def carregar() -> list[dict]:
         file_content = eval(file.read())
         return file_content
     except:
-        return
+        return []
     finally:
         try:
             file.close()
