@@ -12,14 +12,14 @@ def adicionar_receita() -> None:
     print('Adicionando uma nova receita.')
 
     while True:
-        nome = input('Digite o nome da receita: ').strip()
-        if nome:
+        nome = input('Digite o nome da receita: ')
+        if nome or nome.strip() == '':
             break
         print("O nome da receita não pode ser vazio.")
 
     while True:
-        pais = input('Digite o país de origem da receita: ').strip()
-        if pais:
+        pais = input('Digite o país de origem da receita: ')
+        if pais or pais.strip() == '':
             break
         print("O país de origem não pode ser vazio.")
 
@@ -30,7 +30,7 @@ def adicionar_receita() -> None:
 
     while True:
         tempo_de_preparo = input('Digite o tempo de preparo (ex. "20 min"): ').strip()
-        if tempo_de_preparo:
+        if tempo_de_preparo or tempo_de_preparo.strip() == '':
             break
         print("O tempo de preparo não pode ser vazio.")
 
@@ -159,7 +159,7 @@ def modificar_receita(valor) -> None:
 def salvar() -> None:
     """Salva as receitas em um arquivo chamado receitas.txt na raiz do aplicativo."""
     try:
-        file = open('receitas.txt', 'w+')
+        file = open('./receitas.txt', 'w')
         file.write(str(receitas))
     except:
         input('Erro ao criar arquivo!\nPressione enter para continuar.')
@@ -172,13 +172,11 @@ def salvar() -> None:
 # Carregar
 def carregar() -> list[dict]:
     try:
-        file = open("receitas.txt", "r")
-        print(__path__(file))
-        input()
+        file = open("./receitas.txt", "r")
         file_content = eval(file.read())
         return file_content
     except:
-        return []
+        return
     finally:
         try:
             file.close()
